@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f172a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="生字查詢">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>康軒一年級生字查詢</title>
+<style>
+:root {
+  --bg:#0b1220; --panel:#111827; --panel2:#172033; --text:#f8fafc;
+  --muted:#94a3b8; --line:#334155; --accent:#38bdf8; --ok:#34d399;
+  --warn:#fbbf24; --danger:#f87171;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{
+  margin:0; min-height:100vh; color:var(--text);
+  font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif;
+  background:radial-gradient(circle at top,#16213a 0,#0b1220 48%,#080d18 100%);
+}
+button,input{font:inherit}
+.wrap{max-width:900px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(30px + env(safe-area-inset-bottom))}
+.hero{padding:14px 4px 18px}
+.hero h1{margin:0;font-size:clamp(31px,8vw,50px);letter-spacing:.02em}
+.hero p{color:var(--muted);margin:7px 0 0;line-height:1.5}
+.card{
+  background:rgba(17,24,39,.94); border:1px solid var(--line); border-radius:22px;
+  padding:16px; margin-bottom:14px; box-shadow:0 18px 40px rgba(0,0,0,.24)
+}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.tab{
+  border:1px solid var(--line);border-radius:14px;padding:12px;background:#172033;color:#cbd5e1;
+  font-weight:800;cursor:pointer
+}
+.tab.active{background:#dff5ff;color:#075985;border-color:#7dd3fc}
+.searchrow{display:grid;grid-template-columns:1fr auto;gap:10px}
+input{
+  width:100%; border-radius:16px; border:1px solid var(--line); background:#0b1220;
+  color:white; padding:15px 16px; font-size:22px; outline:none
+}
+input:focus{border-color:var(--accent); box-shadow:0 0 0 3px rgba(56,189,248,.15)}
+.primary{
+  border:0;border-radius:16px;padding:0 22px;background:var(--accent);color:#082f49;
+  font-size:18px;font-weight:900;cursor:pointer
+}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{
+  border:1px solid var(--line);background:#172033;color:#dbeafe;border-radius:999px;
+  padding:8px 13px;cursor:pointer
+}
+.result-char{font-size:86px;font-weight:950;line-height:1;margin:5px 0 16px}
+.hit{border-left:5px solid var(--ok);padding:13px 14px;background:#0b1d18;border-radius:13px;margin-top:10px}
+.miss{border-left:5px solid var(--warn);padding:13px 14px;background:#211a08;border-radius:13px}
+.lesson-title{font-size:22px;font-weight:900;margin:6px 0}
+.badge{display:inline-block;border:1px solid #475569;border-radius:999px;padding:4px 10px;color:#dbeafe;font-size:13px;margin:2px 4px 2px 0}
+.small{font-size:13px;color:var(--muted);line-height:1.55}
+.hidden{display:none!important}
+.sentence{font-size:30px;line-height:2;word-break:break-all}
+.token{display:inline-flex;flex-direction:column;align-items:center;min-width:38px;margin:2px 1px;border-bottom:4px solid transparent}
+.token.learned{border-bottom-color:var(--ok)} .token.unknown{border-bottom-color:#64748b}
+.token small{font-size:10px;color:var(--muted);line-height:1.1}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;color:var(--muted);font-size:13px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.dot.ok{background:var(--ok)} .dot.unknown{background:#64748b}
+.section-title{font-weight:900;font-size:18px;margin-bottom:8px}
+.recent{display:flex;gap:8px;flex-wrap:wrap}
+.install-note{display:none;margin-top:10px;padding:10px 12px;border-radius:12px;background:#172033;color:#cbd5e1;font-size:13px}
+footer{text-align:center;color:#64748b;font-size:12px;padding:6px 0 12px}
+@media(max-width:640px){
+  .searchrow{grid-template-columns:1fr}
+  .primary{padding:13px 18px}
+  .result-char{font-size:70px}
+  .sentence{font-size:27px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1>國語生字查詢 🔎</h1>
+    <p>輸入一個字，就知道它在康軒一年級上／下學期哪一課出現過。</p>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="single">單字查詢</button>
+    <button class="tab" data-tab="sentence">句子檢查</button>
+  </div>
+
+  <section id="single" class="card">
+    <div class="searchrow">
+      <input id="charInput" maxlength="1" autocomplete="off" inputmode="text" placeholder="例如：蛙">
+      <button id="searchBtn" class="primary">查詢</button>
+    </div>
+
+    <div class="quick">
+      <button class="chip" data-char="蛙">蛙</button>
+      <button class="chip" data-char="雲">雲</button>
+      <button class="chip" data-char="路">路</button>
+      <button class="chip" data-char="夢">夢</button>
+      <button class="chip" data-char="開">開</button>
+    </div>
+
+    <div id="result" style="margin-top:18px"></div>
+  </section>
+
+  <section id="sentence" class="card hidden">
+    <div class="searchrow">
+      <input id="sentenceInput" autocomplete="off" placeholder="例如：我們今天去公園玩">
+      <button id="sentenceBtn" class="primary">檢查</button>
+    </div>
+    <div id="sentenceResult" style="margin-top:18px"></div>
+  </section>
+
+  <section class="card">
+    <div class="section-title">最近查過</div>
+    <div id="recent" class="recent"><span class="small">尚無查詢紀錄</span></div>
+  </section>
+
+  <section class="card">
+    <div class="section-title">目前資料範圍</div>
+    <div class="small">
+      一上：第 1～6 課<br>
+      一下：第 1～12 課<br>
+      共 262 筆課次生字資料，261 個不重複國字。
+    </div>
+    <div id="installNote" class="install-note">
+      📱 部署到 HTTPS 網址後，可用瀏覽器「加入主畫面」，操作起來會很像 App。
+    </div>
+  </section>
+
+  <footer>「查不到」只代表目前匯入的教材中沒有找到，不等於一定沒學過。</footer>
+</div>
+
+<script>
+const DB = {"meta": {"name": "康軒一年級生字查詢資料庫", "grade": 1, "sources": [{"semester": "上", "lessons": 6, "source": "康_一上_一般版.pdf"}, {"semester": "下", "lessons": 12, "source": "康_一下_一般版.pdf"}], "entry_count": 262, "unique_character_count": 261}, "characters": {"你": [{"grade": 1, "semester": "上", "lesson": 1, "lesson_title": "拍拍手"}], "右": [{"grade": 1, "semester": "上", "lesson": 1, "lesson_title": "拍拍手"}], "左": [{"grade": 1, "semester": "上", "lesson": 1, "lesson_title": "拍拍手"}], "手": [{"grade": 1, "semester": "上", "lesson": 1, "lesson_title": "拍拍手"}], "拍": [{"grade": 1, "semester": "上", "lesson": 1, "lesson_title": "拍拍手"}], "下": [{"grade": 1, "semester": "上", "lesson": 1, "lesson_title": "拍拍手"}], "上": [{"grade": 1, "semester": "上", "lesson": 1, "lesson_title": "拍拍手"}], "也": [{"grade": 1, "semester": "上", "lesson": 1, "lesson_title": "拍拍手"}], "他": [{"grade": 1, "semester": "上", "lesson": 1, "lesson_title": "拍拍手"}], "我": [{"grade": 1, "semester": "上", "lesson": 2, "lesson_title": "這是誰的？"}], "的": [{"grade": 1, "semester": "上", "lesson": 2, "lesson_title": "這是誰的？"}], "誰": [{"grade": 1, "semester": "上", "lesson": 2, "lesson_title": "這是誰的？"}], "是": [{"grade": 1, "semester": "上", "lesson": 2, "lesson_title": "這是誰的？"}], "這": [{"grade": 1, "semester": "上", "lesson": 2, "lesson_title": "這是誰的？"}], "多": [{"grade": 1, "semester": "上", "lesson": 2, "lesson_title": "這是誰的？"}], "啊": [{"grade": 1, "semester": "上", "lesson": 2, "lesson_title": "這是誰的？"}], "了": [{"grade": 1, "semester": "上", "lesson": 2, "lesson_title": "這是誰的？"}], "好": [{"grade": 1, "semester": "上", "lesson": 2, "lesson_title": "這是誰的？"}], "分": [{"grade": 1, "semester": "上", "lesson": 2, "lesson_title": "這是誰的？"}], "個": [{"grade": 1, "semester": "上", "lesson": 2, "lesson_title": "這是誰的？"}], "陪": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "玩": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "和": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "千": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "秋": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "海": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "大": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "到": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "山": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "高": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "起": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "們": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "友": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "朋": [{"grade": 1, "semester": "上", "lesson": 3, "lesson_title": "秋千"}], "人": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "兩": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "課": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "小": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "子": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "青": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "隻": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "找": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "看": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "拉": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "心": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "開": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "蛙": [{"grade": 1, "semester": "上", "lesson": 4, "lesson_title": "大個子，小個子"}], "有": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "外": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "裡": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "門": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "比": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "早": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "同": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "不": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "麼": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "什": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "又": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "主": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "王": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "晚": [{"grade": 1, "semester": "上", "lesson": 5, "lesson_title": "比一比"}], "紅": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "花": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "白": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "長": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "路": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "朵": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "說": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "向": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "在": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "走": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "那": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "頭": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "從": [{"grade": 1, "semester": "上", "lesson": 6, "lesson_title": "小路"}], "雲": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "空": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "天": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "靜": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "要": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "先": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "草": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "鳥": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "蟲": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "水": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "去": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "再": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "完": [{"grade": 1, "semester": "下", "lesson": 1, "lesson_title": "看"}], "唱": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "正": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "沒": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "聽": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "園": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "出": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "歌": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "快": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "輕": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "著": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "香": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "身": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "聞": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "芽": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "新": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "呢": [{"grade": 1, "semester": "下", "lesson": 2, "lesson_title": "花園裡有什麼？"}], "始": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "會": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "樂": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "音": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "媽": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "過": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "陣": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "短": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "重": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "來": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "桌": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "就": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "菜": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "吃": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "後": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "真": [{"grade": 1, "semester": "下", "lesson": 3, "lesson_title": "媽媽的音樂會"}], "脫": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "把": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "家": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "回": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "鞋": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "船": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "像": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "見": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "靠": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "爸": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "溫": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "受": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "享": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "口": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "港": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "暖": [{"grade": 1, "semester": "下", "lesson": 4, "lesson_title": "鞋"}], "它": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "做": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "怎": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "問": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "種": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "陽": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "澆": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "於": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "需": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "才": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "話": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "公": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "院": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "放": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "光": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}], "件": [{"grade": 1, "semester": "下", "lesson": 5, "lesson_title": "小種子快長大"}, {"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "弟": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "床": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "班": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "跟": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "奶": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "片": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "卡": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "拿": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "酒": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "她": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "您": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "歡": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "喜": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "寫": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "給": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "都": [{"grade": 1, "semester": "下", "lesson": 6, "lesson_title": "奶奶的小跟班"}], "己": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "自": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "躺": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "夢": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "作": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "黑": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "糖": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "棉": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "成": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "變": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "亮": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "漂": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "更": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "得": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "鵝": [{"grade": 1, "semester": "下", "lesson": 7, "lesson_title": "作夢的雲"}], "滴": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "穿": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "雙": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "雨": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "妹": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "珠": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "珍": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "顆": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "戲": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "遊": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "金": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "缸": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "魚": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "面": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "落": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "湯": [{"grade": 1, "semester": "下", "lesson": 8, "lesson_title": "妹妹的紅雨鞋"}], "掃": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "國": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "太": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "虹": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "彩": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "低": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "馬": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "淨": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "洗": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "除": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "認": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "很": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "葉": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "樹": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "刷": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "淡": [{"grade": 1, "semester": "下", "lesson": 9, "lesson_title": "七彩的虹"}], "風": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "線": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "趣": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "化": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "地": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "跑": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "奇": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "神": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "升": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "箏": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "事": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "每": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "笑": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "跳": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "情": [{"grade": 1, "semester": "下", "lesson": 10, "lesson_title": "和你在一起"}], "時": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "記": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "今": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "日": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "生": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "收": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "學": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "嗎": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "道": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "知": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "次": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "第": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "福": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "祝": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "張": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "謝": [{"grade": 1, "semester": "下", "lesson": 11, "lesson_title": "生日快樂"}], "半": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "點": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "前": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "燈": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "想": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "息": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "休": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "停": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "楚": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "清": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "油": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "加": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "幫": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "吧": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "兒": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}], "慢": [{"grade": 1, "semester": "下", "lesson": 12, "lesson_title": "小黑"}]}};
+const chars = DB.characters;
+const RECENT_KEY = "kangxuan_recent_v2";
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+function semesterText(v) { return v === "上" ? "一年級上學期" : "一年級下學期"; }
+
+function getRecent() {
+  try { return JSON.parse(localStorage.getItem(RECENT_KEY) || "[]"); } catch { return []; }
+}
+function setRecent(ch) {
+  let arr = getRecent().filter(x => x !== ch);
+  arr.unshift(ch); arr = arr.slice(0,8);
+  localStorage.setItem(RECENT_KEY, JSON.stringify(arr));
+  renderRecent();
+}
+function renderRecent() {
+  const box = document.getElementById("recent");
+  const arr = getRecent();
+  if (!arr.length) { box.innerHTML = '<span class="small">尚無查詢紀錄</span>'; return; }
+  box.innerHTML = arr.map(ch => `<button class="chip recentChip" data-char="${esc(ch)}">${esc(ch)}</button>`).join("");
+  box.querySelectorAll(".recentChip").forEach(b => b.onclick = () => {
+    document.getElementById("charInput").value = b.dataset.char;
+    switchTab("single");
+    searchChar(b.dataset.char);
+  });
+}
+
+function searchChar(ch) {
+  const box = document.getElementById("result");
+  ch = (ch || "").trim().slice(0,1);
+  if (!ch) { box.innerHTML = '<div class="miss">請先輸入一個國字。</div>'; return; }
+  setRecent(ch);
+  const hits = chars[ch];
+  if (!hits) {
+    box.innerHTML = `<div class="result-char">${esc(ch)}</div>
+      <div class="miss"><b>目前資料庫查不到</b>
+      <div class="small">可能尚未學到，或尚未匯入對應年級／冊別。</div></div>`;
+    return;
+  }
+  box.innerHTML = `<div class="result-char">${esc(ch)}</div>` + hits.map(h => `
+    <div class="hit">
+      <span class="badge">${semesterText(h.semester)}</span>
+      <span class="badge">第 ${h.lesson} 課</span>
+      <div class="lesson-title">《${esc(h.lesson_title)}》</div>
+      <div class="small">✅ 這個字在目前教材中出現過</div>
+    </div>`).join("");
+}
+
+function sentenceCheck() {
+  const text = document.getElementById("sentenceInput").value.trim();
+  const box = document.getElementById("sentenceResult");
+  if (!text) { box.innerHTML = '<div class="miss">請先輸入一句話。</div>'; return; }
+  let learned = 0, unknown = 0;
+  const items = [...text].map(ch => {
+    if (/[㐀-鿿]/.test(ch)) {
+      const hits = chars[ch];
+      if (hits) {
+        learned++;
+        const first = hits[0];
+        const tag = `${first.semester}${first.lesson}`;
+        const title = `${semesterText(first.semester)} 第${first.lesson}課《${first.lesson_title}》`;
+        return `<span class="token learned" title="${esc(title)}">${esc(ch)}<small>${tag}</small></span>`;
+      }
+      unknown++;
+      return `<span class="token unknown" title="目前資料庫查不到">${esc(ch)}<small>?</small></span>`;
+    }
+    return `<span>${esc(ch)}</span>`;
+  }).join("");
+  box.innerHTML = `<div class="sentence">${items}</div>
+    <div class="legend">
+      <span><i class="dot ok"></i>目前教材查得到</span>
+      <span><i class="dot unknown"></i>目前資料庫查不到</span>
+    </div>
+    <div class="small" style="margin-top:8px">查得到 ${learned} 字｜查不到 ${unknown} 字</div>`;
+}
+
+function switchTab(tab) {
+  document.querySelectorAll(".tab").forEach(b => b.classList.toggle("active", b.dataset.tab === tab));
+  document.getElementById("single").classList.toggle("hidden", tab !== "single");
+  document.getElementById("sentence").classList.toggle("hidden", tab !== "sentence");
+}
+
+document.getElementById("searchBtn").onclick = () => searchChar(document.getElementById("charInput").value);
+document.getElementById("charInput").addEventListener("keydown", e => { if (e.key === "Enter") searchChar(e.target.value); });
+document.querySelectorAll("[data-char]:not(.recentChip)").forEach(el => el.onclick = () => {
+  document.getElementById("charInput").value = el.dataset.char; searchChar(el.dataset.char);
+});
+document.getElementById("sentenceBtn").onclick = sentenceCheck;
+document.getElementById("sentenceInput").addEventListener("keydown", e => { if (e.key === "Enter") sentenceCheck(); });
+document.querySelectorAll(".tab").forEach(btn => btn.onclick = () => switchTab(btn.dataset.tab));
+
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  navigator.serviceWorker.register('./sw.js').catch(()=>{});
+}
+if (location.protocol.startsWith('http')) {
+  document.getElementById("installNote").style.display = "block";
+}
+renderRecent();
+</script>
+</body>
+</html>
