@@ -1,5 +1,1 @@
-const CACHE='kangxuan-v2';
-const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./characters.json'];
-self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
-self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));
-self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
+const C='kx-v3';self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(x=>x.addAll(['./','./index.html','./manifest.webmanifest','./icon.svg']))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));

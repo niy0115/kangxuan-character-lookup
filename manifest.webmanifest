@@ -1,5 +1,5 @@
 {
-  "name": "康軒一年級生字查詢",
+  "name": "康軒生字查詢",
   "short_name": "生字查詢",
   "start_url": "./",
   "display": "standalone",
@@ -10,8 +10,7 @@
     {
       "src": "icon.svg",
       "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/svg+xml"
     }
   ]
 }

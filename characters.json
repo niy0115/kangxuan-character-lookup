@@ -1,21 +1,26 @@
 {
   "meta": {
-    "name": "康軒一年級生字查詢資料庫",
-    "grade": 1,
+    "name": "康軒國語生字查詢資料庫",
     "sources": [
       {
+        "grade": 1,
         "semester": "上",
-        "lessons": 6,
-        "source": "康_一上_一般版.pdf"
+        "lessons": 6
       },
       {
+        "grade": 1,
         "semester": "下",
+        "lessons": 12
+      },
+      {
+        "grade": 2,
+        "semester": "上",
         "lessons": 12,
-        "source": "康_一下_一般版.pdf"
+        "note": "僅生字，不含認讀字"
       }
     ],
-    "entry_count": 262,
-    "unique_character_count": 261
+    "entry_count": 442,
+    "unique_character_count": 439
   },
   "characters": {
     "你": [
@@ -1734,6 +1739,12 @@
         "semester": "下",
         "lesson": 9,
         "lesson_title": "七彩的虹"
+      },
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
       }
     ],
     "風": [
@@ -2110,6 +2121,1436 @@
         "semester": "下",
         "lesson": 12,
         "lesson_title": "小黑"
+      }
+    ],
+    "位": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "坐": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "望": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "希": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "年": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "師": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "老": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "書": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "本": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "力": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "用": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "故": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "為": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "以": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 1,
+        "lesson_title": "新學年新希望"
+      }
+    ],
+    "番": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "圓": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "煎": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "蛋": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "全": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "夾": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "司": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "輪": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "切": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "茄": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "堡": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "城": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "方": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "中": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "吐": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 2,
+        "lesson_title": "一起做早餐"
+      }
+    ],
+    "棒": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      },
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "屋": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "貓": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "叔": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "巷": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "娘": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "娶": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "忙": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "蝶": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "蝴": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "樣": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "扮": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "打": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "筆": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "黃": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 3,
+        "lesson_title": "走過小巷"
+      }
+    ],
+    "鬧": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "熱": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "飄": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "動": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "運": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "步": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "容": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "往": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "哇": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "舞": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "河": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "聲": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "協": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "腳": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "汗": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 4,
+        "lesson_title": "運動會"
+      }
+    ],
+    "暑": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "南": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "鄉": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "籃": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "竹": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "划": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "跨": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "等": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "帶": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "假": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "近": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "原": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "叫": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "邊": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "吹": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 5,
+        "lesson_title": "坐竹籃船"
+      }
+    ],
+    "此": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "因": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "節": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "餅": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "鎮": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "愛": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "色": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "遠": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "排": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "進": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "買": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "客": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "甜": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "乾": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "月": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 6,
+        "lesson_title": "小鎮的柿餅節"
+      }
+    ],
+    "單": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "簡": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "針": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "胖": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "衣": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "東": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "敢": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "臣": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "明": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "聰": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "滿": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "街": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "直": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "西": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 7,
+        "lesson_title": "國王的新衣裳"
+      }
+    ],
+    "法": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "瓶": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "喝": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "烏": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "渴": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "行": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "旅": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "物": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "林": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "森": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "難": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "石": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "許": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "裝": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "午": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 8,
+        "lesson_title": "「聰明」的小熊"
+      }
+    ],
+    "柱": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "腿": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "粗": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "操": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "象": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "沖": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "搖": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "部": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "幾": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "砍": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "沿": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "少": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "沉": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "牽": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "首": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 9,
+        "lesson_title": "大象有多重？"
+      }
+    ],
+    "冷": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "卻": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "夜": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "梨": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "雪": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "反": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "相": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "季": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "臺": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "冬": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "春": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "雖": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "待": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "火": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "煙": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 10,
+        "lesson_title": "新年快樂"
+      }
+    ],
+    "洋": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "者": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "飛": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "具": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "皮": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "飽": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "伸": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "嘴": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "北": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "寒": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "翅": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "站": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "服": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "急": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "沙": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 11,
+        "lesson_title": "遠方來的黑皮"
+      }
+    ],
+    "絡": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "鼓": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "牠": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "涼": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "灰": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "冰": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "冒": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "居": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "發": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "欣": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "聚": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "團": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "幸": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "咪": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
+      }
+    ],
+    "圍": [
+      {
+        "grade": 2,
+        "semester": "上",
+        "lesson": 12,
+        "lesson_title": "我愛冬天"
       }
     ]
   }
